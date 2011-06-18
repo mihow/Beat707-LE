@@ -33,6 +33,9 @@ void readButtons()
             if (q == 0) specialModeZone = 1; // BPM
             else if (q == 1) specialModeZone = 2; // Note-Number
             else if (q == 2) specialModeZone = 3; // Channel
+            else if (q == 3) specialModeZone = 4; // numberOfSteps
+            else if (q == 4) specialModeZone = 5; // midiClockShuffle
+            else if (q == 5) specialModeZone = 6; // midiClockDirection
               else specialMode = 0; // Close
             clearDisplay();
           }
@@ -44,6 +47,9 @@ void readButtons()
               if (specialModeZone == 1 && song_settings.midiClockBPM < 250) { song_settings.midiClockBPM++; MidiClockNewTime(); } // BPM
                 else if (specialModeZone == 2 && currentTrack < DRUMTRACKS && song_settings.dmNotes[currentTrack] < 127) song_settings.dmNotes[currentTrack]++; // Note-Number
                 else if (specialModeZone == 3 && currentTrack < DRUMTRACKS && song_settings.dmChannel[currentTrack] < 15) song_settings.dmChannel[currentTrack]++; // Channel
+                else if (specialModeZone == 4 && song_settings.numberOfSteps < 16) song_settings.numberOfSteps++; // numberOfSteps
+                else if (specialModeZone == 5 && song_settings.midiClockShuffle < 6) { song_settings.midiClockShuffle++; MidiShuffleUpdate(); }// midiClockShuffle
+                else if (specialModeZone == 6) song_settings.midiClockDirection = 1; // midiClockDirection
             }
             else if (q == 8) // Left
             {
@@ -57,6 +63,9 @@ void readButtons()
               if (specialModeZone == 1) { song_settings.midiClockBPM = 120; MidiClockNewTime(); } // BPM
                 else if (specialModeZone == 2 && currentTrack < DRUMTRACKS) song_settings.dmNotes[currentTrack] = 60; // Note-Number
                 else if (specialModeZone == 3 && currentTrack < DRUMTRACKS) song_settings.dmChannel[currentTrack] = 9; // Channel              
+                else if (specialModeZone == 4) song_settings.numberOfSteps = 16; // numberOfSteps
+                else if (specialModeZone == 5) { song_settings.midiClockShuffle = 0; MidiShuffleUpdate(); }// midiClockShuffle
+                else if (specialModeZone == 6) song_settings.midiClockDirection = 0; // midiClockDirection
             }
             else if (q == 10) // Right
             {
@@ -70,6 +79,9 @@ void readButtons()
               if (specialModeZone == 1 && song_settings.midiClockBPM > 25) { song_settings.midiClockBPM--; MidiClockNewTime(); } // BPM
                 else if (specialModeZone == 2 && currentTrack < DRUMTRACKS && song_settings.dmNotes[currentTrack] > 0) song_settings.dmNotes[currentTrack]--; // Note-Number
                 else if (specialModeZone == 3 && currentTrack < DRUMTRACKS && song_settings.dmChannel[currentTrack] > 0) song_settings.dmChannel[currentTrack]--; // Channel              
+                else if (specialModeZone == 4 && song_settings.numberOfSteps > 1) song_settings.numberOfSteps--; // numberOfSteps
+                else if (specialModeZone == 5 && song_settings.midiClockShuffle > 0) { song_settings.midiClockShuffle--; MidiShuffleUpdate(); } // midiClockShuffle
+                else if (specialModeZone == 6) song_settings.midiClockDirection = 2; // midiClockDirection
             }
             else 
             {
@@ -204,6 +216,9 @@ void setLEDs()
       SPECIAL_MODE_COLOR[0] = SPECIAL_MODE_COLOR_STRENG;
       SPECIAL_MODE_COLOR[1] = SPECIAL_MODE_COLOR_STRENG;
       SPECIAL_MODE_COLOR[2] = SPECIAL_MODE_COLOR_STRENG;
+      SPECIAL_MODE_COLOR[3] = SPECIAL_MODE_COLOR_STRENG;
+      SPECIAL_MODE_COLOR[4] = SPECIAL_MODE_COLOR_STRENG;
+      SPECIAL_MODE_COLOR[5] = SPECIAL_MODE_COLOR_STRENG;
       SPECIAL_MODE_CLOSE_COLOR[15] = SPECIAL_MODE_CLOSE_COLOR_STRENG;
     }
     else

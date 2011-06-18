@@ -14,6 +14,16 @@
   Buttons: Coln0=D0 / Coln1=D1 / Coln2=D2 / Coln3=D3 / Butn0=D4 / Butn1=D5 / Butn2=D6 / Butn3=D7
   Header:  CS=D10(PWM) / MOSI=D11(PWM) / MISO=D12 / SCK=D13
   
+  --------
+
+  Interface Settings:
+    1 = BPM Time
+    2 = Note-Number
+    3 = Channel
+    4 = Number of Steps
+    5 = Clock Shuffle
+    6 = Clock Direction
+    
 */
 
 #include "Config.h"
@@ -47,6 +57,7 @@ NewSoftSerial xSerial(12,13); // (Receive/Transmit)
 struct song_settings_t
 {
   char header[6];
+  uint8_t versionNumber;
   uint16_t dmSteps[NPATTERNS][(DRUMTRACKS+2)*4]; // [tracks*steps] - 32x2 Steps - last 2 tracks are Accents - each bit is a step on/off = 768 bytes
   uint8_t dmNotes[DRUMTRACKS];
   uint8_t dmChannel[DRUMTRACKS];
@@ -106,6 +117,7 @@ void setup()
   if (INIT_EEPROM == 1 || song_settings.header[0] != 'B' || song_settings.header[1] != '7' || song_settings.header[2] != '0' || song_settings.header[3] != '7' || song_settings.header[4] != 'L' || song_settings.header[5] != 'E')
   {
     song_settings.header[0] = 'B'; song_settings.header[1] = '7'; song_settings.header[2] = '0'; song_settings.header[3] = '7'; song_settings.header[4] = 'L'; song_settings.header[5] = 'E';
+    song_settings.versionNumber = 1;
     somethingChanged = 1;
   }
   else

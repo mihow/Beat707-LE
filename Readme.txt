@@ -15,6 +15,36 @@ Connect MIDI cable pins to V+ (using the 220 resistor) and SCK on the Headers. (
 
 --------------------------------------------------------------------------------------------------------
 
+You will need to update your Arduino IDE files in order for it to use the USBtinyISP (or any other AVR ISP programmer) and also add the Arduino 20Mhz option to the IDE options. (don't use the regular Arduino boards, as you may break the ATmega328 chip on the Button Pad board)
+
+	1) update the Arduino/Preferences.txt file, look for "upload.using=bootloader" and change to "upload.using=usbtinyisp" (or the name of the ISP you will be using) Visit the following page to find your preferences.txt file: http://www.arduino.cc/en/Hacking/Preferences
+
+	2) in the Arduino IDE folder, look for hardware/arduino and inside it, edit boards.txt, add the text below as it is, or use the included boards.txt file from the GitHub files. When uploading the code, be sure to select the 20Mhz board first.
+
+##############################################################
+
+atmega328_20.name=Arduino Duemilanove or Nano (20MHz) w/ ATmega328
+
+atmega328_20.upload.protocol=stk500
+atmega328_20.upload.maximum_size=30720
+atmega328_20.upload.speed=57600
+
+atmega328_20.bootloader.low_fuses=0xFF
+atmega328_20.bootloader.high_fuses=0xDA
+atmega328_20.bootloader.extended_fuses=0x05
+atmega328_20.bootloader.path=atmega
+atmega328_20.bootloader.file=ATmegaBOOT_168_atmega328_20MHz.hex
+atmega328_20.bootloader.unlock_bits=0x3F
+atmega328_20.bootloader.lock_bits=0x0F
+
+atmega328_20.build.mcu=atmega328p
+atmega328_20.build.f_cpu=20000000L
+atmega328_20.build.core=arduino
+
+##############################################################
+
+--------------------------------------------------------------------------------------------------------
+
 Latest version direct download link:
 
 https://github.com/Beat707/Beat707-LE/archives/master

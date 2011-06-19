@@ -6,10 +6,6 @@
   
   --------
   
-  Based on the following hardware: http://www.sparkfun.com/products/9022
-  Requires USBtinyISP board (around $ 10 on eBay - works mostly on Windows AFAIK, we don't give support to it, sorry) a MIDI Cable, 220 Resistor and 5V+ Power Supply.
-  Connect MIDI cable pins to V+ (using the 220 resistor) and SCK on the Headers. (Digital Pin 13 on the Arduino IDE)
-  
   Headers x Arduino Pins
   C595:    Clock=A0 / Data=A1 / Latch=A2 / Clear=A3 / Enable=A4    
   Buttons: Coln0=D0 / Coln1=D1 / Coln2=D2 / Coln3=D3 / Butn0=D4 / Butn1=D5 / Butn2=D6 / Butn3=D7

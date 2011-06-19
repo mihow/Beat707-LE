@@ -10,7 +10,8 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9S8Y6AWAZQ
 --------------------------------------------------------------------------------------------------------
 
 Based on the following hardware: http://www.sparkfun.com/products/9022
-Requires USBtinyISP board (around $ 10 on eBay) a MIDI Cable, 220 Resistor and 5V+ Power Supply.
+Don't forget the actual buttons: http://www.sparkfun.com/products/7835
+Requires USBtinyISP board (around $ 10 on eBay - or any other AVR ISP programmer that is compatible with the Arduino IDE) a MIDI Cable, 220 Resistor and 5V+ Power Supply.
 Connect MIDI cable pins to V+ (using the 220 resistor) and SCK on the Headers. (Digital Pin 13 on the Arduino IDE)
 
 --------------------------------------------------------------------------------------------------------
@@ -20,6 +21,8 @@ You will need to update your Arduino IDE files in order for it to use the USBtin
 	1) update the Arduino/Preferences.txt file, look for "upload.using=bootloader" and change to "upload.using=usbtinyisp" (or the name of the ISP you will be using) Visit the following page to find your preferences.txt file: http://www.arduino.cc/en/Hacking/Preferences
 
 	2) in the Arduino IDE folder, look for hardware/arduino and inside it, edit boards.txt, add the text below as it is, or use the included boards.txt file from the GitHub files. When uploading the code, be sure to select the 20Mhz board first.
+
+	3) keep in mind that everytime you upload a new program, it will erase the EEPROM data. (not sure why, if someone knows how to fix this, please, let us know)
 
 ##############################################################
 

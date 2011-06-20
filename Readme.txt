@@ -24,6 +24,8 @@ You will need to update your Arduino IDE files in order for it to use the USBtin
 
 	3) keep in mind that everytime you upload a new program, it will erase the EEPROM data. (not sure why, if someone knows how to fix this, please, let us know)
 
+	4) special note about the USBtinyISP, if you have problems using it, try using a USB-HUB with it. Here we had all sort of problems until we connected to a small USB-HUB, and now it works perfectly.
+
 ##############################################################
 
 atmega328_20.name=Arduino Duemilanove or Nano (20MHz) w/ ATmega328

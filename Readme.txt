@@ -4,8 +4,7 @@ Beat707.com is a joint collaboration between Wusik.com and RuggedCircuits.com, a
 
 --------------------------------------------------------------------------------------------------------
 
-Please, consider making a donation to support continued software development:
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N9S8Y6AWAZQJA
+Please, consider making a donation to support continued software development: http://donate.Beat707.com
 
 --------------------------------------------------------------------------------------------------------
 

@@ -15,15 +15,11 @@ Connect MIDI cable pins to V+ (using the 220 resistor) and SCK on the Headers. (
 
 --------------------------------------------------------------------------------------------------------
 
-You will need to update your Arduino IDE files in order for it to use the USBtinyISP (or any other AVR ISP programmer) and also add the Arduino 20Mhz option to the IDE options. (don't use the regular Arduino boards, as you may break the ATmega328 chip on the Button Pad board)
+You will need to update your Arduino IDE files in order for it to use the USBtinyISP (or any other AVR ISP programmer) and also have the Arduino 20Mhz board listed under boards. (don't use the regular Arduino boards, as you may break the ATmega328 chip on the Button Pad board)
 
-	1) update the Arduino/Preferences.txt file, look for "upload.using=bootloader" and change to "upload.using=usbtinyisp" (or the name of the ISP you will be using) Visit the following page to find your preferences.txt file: http://www.arduino.cc/en/Hacking/Preferences
-
-	2) in the Arduino IDE folder, look for hardware/arduino and inside it, edit boards.txt, add the text below as it is, or use the included boards.txt file from the GitHub files. When uploading the code, be sure to select the 20Mhz board first.
-
-	3) keep in mind that everytime you upload a new program, it will erase the EEPROM data. (not sure why, if someone knows how to fix this, please, let us know)
-
-	4) special note about the USBtinyISP, if you have problems using it, try using a USB-HUB with it. Here we had all sort of problems until we connected to a small USB-HUB, and now it works perfectly.
+1) in the Arduino IDE folder, look for hardware/arduino and inside it, edit boards.txt, add the text below as it is, or use the included boards.txt file from the GitHub files. When uploading the code, be sure to select the 20Mhz board first. If you are using a different ISP programmer, edit the atmega328_20.upload.using= line to reflect that.
+2) keep in mind that everytime you upload a new program, it will erase the EEPROM data. (not sure why, if someone knows how to fix this, please, let us know)
+3) special note about the USBtinyISP, if you have problems using it, try using a USB-HUB with it. Here we had all sort of problems until we connected to a small USB-HUB, and now it works perfectly.
 
 ##############################################################
 
@@ -32,6 +28,7 @@ atmega328_20.name=Arduino Duemilanove or Nano (20MHz) w/ ATmega328
 atmega328_20.upload.protocol=stk500
 atmega328_20.upload.maximum_size=30720
 atmega328_20.upload.speed=57600
+atmega328_20.upload.using=usbtinyisp
 
 atmega328_20.bootloader.low_fuses=0xFF
 atmega328_20.bootloader.high_fuses=0xDA
